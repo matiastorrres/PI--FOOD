@@ -48,4 +48,26 @@ data= {
         summary:e .summary        
     }
   })
-  console.log(pepe)
+  // console.log(pepe)
+
+  const  matu = {
+    vegetarian: true,
+    vegan: true,
+    glutenFree: true,
+    dairyFree: "aca",
+    veryHealthy: "pepe",
+    cheap: false,
+    veryPopular: true,
+    sustainable: false,
+    lowFodmap: false,
+    weightWatcherSmartPoints: 4,
+    gaps: 'no',}
+
+
+   const mati = {
+    vegan: matu.vegan,
+    glutenFree: matu.glutenFree,
+    dairyFree: matu.dairyFree,
+    veryHealthy: matu.veryHealthy,
+  }
+  console.log(mati)

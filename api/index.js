@@ -18,10 +18,23 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn, Diet } = require('./src/db.js');
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(async() => {
+  await Diet.bulkCreate([
+    {name:'vegetarian' },
+    {name:'lacto vegetarian' }, 
+    {name:'ovo vegetarian' },
+    {name:'vegan'},
+    {name:'pescetarian'},
+    {name:'paleolithic'},
+    {name:'primal'},
+    {name:'whole30'},
+    {name:'gluten free'},
+    {name:'lacto ovo vegetarian'},
+    {name:'dairy free'}
+   ])
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

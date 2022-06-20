@@ -7,25 +7,29 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
+      primaryKey: true    // es una constraints, primaryKey=>significa que no puede ser null y unico
     },
     title:{
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull:false  // es una constraints, si o si tiene que tener el title, se representa con *
     },
     summary:{
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.TEXT,
+      allowNull: false 
     },
     healthScore:{
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     steps:{
       type: DataTypes.STRING,
     },
+    dishTypes:{
+      type: DataTypes.STRING,
+    },
     img:{
       type:DataTypes.STRING,
-    },
-    
-  });
+    },    
+  },{
+    timestamps:false
+});
 };
