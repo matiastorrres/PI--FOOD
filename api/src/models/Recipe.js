@@ -28,6 +28,7 @@ module.exports = (sequelize) => {
     },
     img:{
       type:DataTypes.STRING,
+      defaultValue: "https://spoonacular.com/recipeImages/716426-312x231.jpg",
     },    
   },{
     timestamps:false

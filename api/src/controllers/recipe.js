@@ -9,11 +9,11 @@ const api = data.results.map(e=>{
     return {
         id: e.id, 
         title:e.title,  //string
-        summary:e.summary, //text 
-        healthScore:e.healthScore, //es un nro
-        steps: e.analyzedInstructions[0]?.steps.map(e=>e.step), //es un array de string
+        // summary:e.summary, //text 
+        // healthScore:e.healthScore, //es un nro
+        // steps: e.analyzedInstructions[0]?.steps.map(e=>e.step), //es un array de string
         img: e.image, //string
-        dishTypes:e.dishTypes, //es un array de string
+        // dishTypes:e.dishTypes, //es un array de string
         diets:e.diets, //es un array de string
     }    
 })
@@ -23,14 +23,14 @@ return api
 
 const recipeDb = async ()=>{
 const db = await Recipe.findAll({
+    attributes:["title","id","img"],
     include: [{
         model : Diet,
         attributes:["name"],  
-        through:{
-            attributes:[]
-        }
+        through:{attributes:[]}
     }]    
 })
+
 return db
 }
 
