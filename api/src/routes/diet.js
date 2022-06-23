@@ -6,8 +6,9 @@ router.get("/", async (req,res)=>{
         const diets = await Diet.findAll({
             attributes:["name"]
         })
+        const resp = await diets.map(e=>e.name)
         //diets.map(e=>console.log(e.toJson())) practicar este console.log no me sale
-        res.status(200).json(diets)
+        return res.status(200).json(resp)
     } catch (error) {
         console.log(error)
     }

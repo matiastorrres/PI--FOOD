@@ -1,5 +1,10 @@
 const GET_ALL_RECIPE= "GET_ALL_RECIPE";
-
+const GET_ALL_DIET = "GET_ALL_DIET";
+const FILTER_BY_DIET = "FILTER_BY_DIET";
+const DETAIL = "DETAIL";
 module.exports ={
-    GET_ALL_RECIPE
+    GET_ALL_RECIPE,
+    GET_ALL_DIET,
+    FILTER_BY_DIET,
+    DETAIL
 }

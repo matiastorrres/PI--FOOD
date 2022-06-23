@@ -21,20 +21,17 @@ const server = require('./src/app.js');
 const { conn, Diet } = require('./src/db.js');
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(async() => {
-  await Diet.bulkCreate([
-    {name:'vegetarian' },
-    {name:'lacto vegetarian' }, 
-    {name:'ovo vegetarian' },
-    {name:'vegan'},
-    {name:'pescetarian'},
-    {name:'paleolithic'},
-    {name:'primal'},
-    {name:'whole30'},
-    {name:'gluten free'},
-    {name:'lacto ovo vegetarian'},
-    {name:'dairy free'}
-   ])
+conn.sync({ force: true })
+.then(async() => {
+
+  const diets = [ 'vegetarian','lacto vegetarian','ovo vegetarian','vegan',
+    'pescetarian','paleolithic','primal','whole30','gluten free','lacto ovo vegetarian','dairy free']
+    diets.map(e=>{
+      Diet.findOrCreate({
+          where:{name:e}
+      })  
+  })
+
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

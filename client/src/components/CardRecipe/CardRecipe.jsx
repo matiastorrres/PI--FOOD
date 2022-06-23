@@ -1,7 +1,7 @@
-function CardRecipe ({currentRecipe,loading}){
-  if(loading){
-    return (<div>loading...</div>)
-  }
+import { Link } from "react-router-dom";
+
+function CardRecipe ({currentRecipe}){
+
     return(
         <> 
            {
@@ -9,12 +9,14 @@ function CardRecipe ({currentRecipe,loading}){
               return(
               <div key={e.id}>
               <img src = {e.img} alt ="food"/>
+              <Link to ={`/home/${e.id}`} >
               <h2>{e.title}</h2>
-              {e.diets[0].name? <div >{e.diets.map((e,i)=><div key={i}>{e.name+' '}<span> &nbsp;  </span> </div>)}</div> : 
-              <div >{e.diets.map((e,i)=><div key={i}>{e+' '}<span> &nbsp;  </span> </div>)}</div> } 
+              </Link>
+              <div >{e.diets}</div>
+              <div>{e.healthScore}</div>
               </div>
-              )
-            })}  
+              )})
+           }  
         </>
     )
 }

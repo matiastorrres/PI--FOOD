@@ -50,6 +50,8 @@
 //   })
 //   // console.log(pepe)
 
+const { title } = require("process")
+
 //   const  matu = {
 //     vegetarian: true,
 //     vegan: true,
@@ -72,18 +74,66 @@
 //   }
 //   console.log(mati)
 
-// const mati = [{title : "Cauliflower, Brown Rice, and Vegetable Fried Rice",
+// const recipeBs= [
+//   {title : "Cauliflower",
 //   id: "c91f28de-fb3e-4781-afaa-64fc5b3444f1",
 //   img: "https://spoonacular.com/recipeImages/716426-312x231.jpg",
-//   diets: [{name: "vegan"},{name: "paleolithic"}]},{title : "Cauliflower, Brown Rice, and Vegetable Fried Rice",
+//   diets: [{name: "vegan"},{name: "paleolithic"}]},
+//   {title : "Brown Rice",
 //   id: "c91f28de-fb3e-4781-afaa-64fc5b3444f1",
 //   img: "https://spoonacular.com/recipeImages/716426-312x231.jpg",
-//   diets: [{name: "vegan"},{name: "paleolithic"}]}
+//   diets: [{name: "paleolithic"}]}
 // ]
+// const res = recipeBs.map(e=>{
+//     return{
+//         title:e.title,
+//         img:e.img,
+//         id:e.id,
+//         diets:e.diets.map(e=>e.name)
+//     }    
+// })
 
 
 // console.log(res)
 
- let diets= [{name: "vegan"},{name: "paleolithic"}]
 
- console.log(diets[0].name)
+
+// console.log(res)
+
+//   let diets= [{name: "vegan"},{name: "paleolithic"}]
+
+//  let res = diets.map(e=>e.name)
+//  console.log(res)
+
+ let res =[{
+  id: 716426,
+  title: "Cauliflower, Brown Rice, and Vegetable Fried Rice",
+  img: "https://spoonacular.com/recipeImages/716426-312x231.jpg",
+  diets: "gluten free, dairy free, lacto ovo vegetarian, vegan"
+  
+},
+{
+  id: 715594,
+  title: "Homemade Garlic and Basil French Fries",
+  img: "https://spoonacular.com/recipeImages/715594-312x231.jpg",
+  diets: "dairy free, lacto ovo vegetarian, vegan"
+  
+},
+{
+  id: 715497,
+  title: "Berry Banana Breakfast Smoothie",
+  img: "https://spoonacular.com/recipeImages/715497-312x231.jpg",
+  diets: "lacto ovo vegetarian"
+  
+}
+]
+
+// let primero= res.map(e=>e.diets)
+// console.log("uno",primero)
+// let segundo = primero.flat()
+// console.log("dos",segundo)
+// let final =[...new Set(segundo)]
+// console.log("tres",final)
+
+let filtrado= res.filter(e=>e.diets.includes("vegan"))
+console.log(filtrado)
