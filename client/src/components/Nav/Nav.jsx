@@ -5,7 +5,7 @@ const Nav = () => {
         <Link to = "/home">
         <div><button>Home</button></div>
         </Link>
-        <Link to = "/home/create">
+        <Link to = "/create">
         <div>Create your own recipe</div>
         </Link>
         </>
