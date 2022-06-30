@@ -1,4 +1,4 @@
-import {GET_ALL_RECIPE, GET_ALL_DIET,FILTER_BY_DIET,DETAIL} from "../typeActions"
+import {GET_ALL_RECIPE, DETAIL, ORDER_ALPHABETICALLY, GET_ALL_DIET, FILTER_BY_DIET, ORDER_SCORE, GET_BY_NAME} from "../typeActions"
 
 export function getAllRecipe(){
     return function(dispatch){
@@ -9,20 +9,27 @@ export function getAllRecipe(){
     }
 }
 
-export function getAllDiet(){
-  return async (dispatch)=>{
-  try {
-      const res = await fetch("http://localhost:3001/diet");
-      const diets = await res.json();
-      return dispatch({type:GET_ALL_DIET, payload:diets});
-  } catch (error) {
-     return console.log (error);
-    }
+export function getByName(name){
+  return function(dispatch){
+    return fetch(`http://localhost:3001/recipe?name=${name}`)
+    .then(res => res.json())
+    .then(recipes => dispatch({type:GET_BY_NAME, payload: recipes}))
+    .catch(error=>console.log(error))
   }
 }
 
-export function filterByDiet(diet){
-  return{type:FILTER_BY_DIET, payload:diet}
+export function getAllDiet(){
+  return function(dispatch){
+    return fetch("http://localhost:3001/diet")
+    .then(res=>res.json())
+      .then(diets => dispatch({type:GET_ALL_DIET, payload:diets}))
+      .catch(error=>console.log(error));
+    }
+  }
+
+
+export function filterByDiet(payload){
+  return {type:FILTER_BY_DIET, payload}
 }
 
 export function getDetail (id){
@@ -31,4 +38,12 @@ export function getDetail (id){
     .then(res=>res.json())
     .then(detail=>dispatch({type:DETAIL, payload: detail}))
   }
+}
+
+export function orderAlphabetically(payload){
+  return {type:ORDER_ALPHABETICALLY, payload}
+}
+
+export function orderScore(payload){
+  return {type:ORDER_SCORE, payload}
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
+import { Link } from "react-router-dom";
 import { getAllDiet } from "../../redux/actions";
 function Create (){
 const [input, setInput] = useState({
@@ -51,6 +52,9 @@ let onSubmit = (e)=>{
 
     return(
         <>
+        <Link to ="/home">
+        <button>Home</button>
+        </Link>
         <form onSubmit={onSubmit}>
             <br></br>
             <div>
